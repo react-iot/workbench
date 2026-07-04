@@ -4,7 +4,7 @@ on:
 
 jobs:
   mirror:
-    runs-on: docker
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -12,6 +12,9 @@ jobs:
 
       - name: Push main to GitHub
         run: |
+          command -v ssh-keyscan >/dev/null 2>&1 || {
+            apt-get update && apt-get install -y openssh-client
+          }
           mkdir -p ~/.ssh
           echo "${{ secrets.MIRROR_GITHUB_SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
