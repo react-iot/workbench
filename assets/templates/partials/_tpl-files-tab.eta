@@ -1,0 +1,23 @@
+<template id="tpl-files-tab">
+  <div class="subpanel-toolbar">
+    <select class="fs-type">
+      <option value="spiffs">SPIFFS</option>
+      <option value="littlefs">LittleFS</option>
+      <option value="fatfs">FATFS</option>
+    </select>
+    <input class="filter" type="search" placeholder="Filter…" />
+    <button class="refresh">Refresh</button>
+    <button class="upload">Upload…</button>
+    <div class="spacer"></div>
+    <div class="usage">
+      <div class="usage-bar"><div class="usage-fill"></div></div>
+      <span class="usage-label">—</span>
+    </div>
+  </div>
+  <div class="dropzone">
+    <table class="file-list">
+      <thead><tr><th>Name</th><th>Size</th><th>Modified</th><th></th></tr></thead>
+      <tbody><tr class="empty"><td colspan="4">No filesystem loaded.</td></tr></tbody>
+    </table>
+  </div>
+</template>

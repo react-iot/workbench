@@ -1,0 +1,17 @@
+<template id="tpl-panel">
+  <div class="panel">
+    <div class="panel-toolbar">
+      <span class="path"></span>
+      <label>Baud <select class="baud"></select></label>
+      <button class="reconnect">Reconnect</button>
+      <%~ include("components/_ui-button-reset", it) %>
+      <%~ include("components/_ui-button-flash-open", it) %>
+      <button class="discover primary" title="Enter bootloader, read chip info, partition table, OTA slots, and NVS">Discover</button>
+      <%~ include("components/_ui-button-flash-mode", it) %>
+      <div class="spacer"></div>
+      <span class="state">idle</span>
+    </div>
+    <div class="subtabs"></div>
+    <div class="subpanels"></div>
+  </div>
+</template>

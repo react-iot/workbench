@@ -1,0 +1,5 @@
+<% if (it.isDev) { %>
+<script id="__bs_script__">//<![CDATA[
+(function(){try{var s=document.createElement('script');s.async=true;s.src='http://'+location.hostname+':<%= it.bsPort %>/browser-sync/browser-sync-client.js';(document.body||document.head).appendChild(s);}catch(e){}})();
+//]]></script>
+<% } %>

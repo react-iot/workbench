@@ -1,0 +1,31 @@
+<aside id="sidebar">
+  <header>
+    <div class="brand">
+      <img src="/img/logo.svg" alt="" class="brand-logo" />
+      <div class="brand-text">
+        <h1>ESP32 Workbench</h1>
+        <p class="brand-tagline">powered by <a href="https://www.reactiot.com.au" target="_blank" rel="noopener noreferrer">React IoT</a></p>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="section-title">
+      <span>Serial ports</span>
+      <button id="refresh" title="Rescan">↻</button>
+    </div>
+    <ul id="ports"></ul>
+  </section>
+  <footer class="sidebar-footer">
+    <span class="app-version" id="app-version"></span>
+    <div class="theme-group" role="group" aria-label="Theme">
+      <button type="button" data-theme-choice="light" aria-pressed="false" title="Light">Light</button>
+      <button type="button" data-theme-choice="dark" aria-pressed="false" title="Dark">Dark</button>
+      <button type="button" data-theme-choice="system" aria-pressed="false" title="Follow system">Auto</button>
+    </div>
+    <button type="button" id="about-btn" class="about-btn" title="About ESP32 Workbench" aria-label="About ESP32 Workbench">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm-1-13h2v2h-2V7Zm0 4h2v6h-2v-6Z"/>
+      </svg>
+    </button>
+  </footer>
+</aside>

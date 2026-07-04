@@ -1,0 +1,27 @@
+{
+  "version": "26.07.04",
+  "tasks": {
+    "start": "deno run --env-file --allow-net --allow-read --allow-write --allow-env --allow-run --allow-sys --node-modules-dir bin/server.ts",
+    "dev": "deno run --env-file --allow-net --allow-read --allow-write --allow-env --allow-run --allow-sys --node-modules-dir --watch bin/server.ts",
+    "build:css": "deno run --allow-read --allow-write --allow-env --allow-run --node-modules-dir tools/build-css.ts",
+    "dev:css": "deno run --allow-read --allow-write --allow-env --allow-run --node-modules-dir tools/build-css.ts --watch",
+    "dev:bs": "deno run --allow-read --allow-write --allow-env --allow-run --allow-net --node-modules-dir tools/browsersync.ts",
+    "flash:boot":   "deno run -A flash_helper/cli.ts enter-bootloader",
+    "flash:reset":  "deno run -A flash_helper/cli.ts hard-reset",
+    "flash:verify": "deno run -A flash_helper/cli.ts verify",
+    "flash:test":   "deno test -A flash_helper/tests/"
+  },
+  "imports": {
+    "serialport": "npm:serialport@12.0.0",
+    "bonjour-service": "npm:bonjour-service@1.2.1",
+    "eta": "npm:eta@3",
+    "pako": "npm:pako@2.1.0",
+    "usb": "npm:usb@2.13.0"
+  },
+  "nodeModulesDir": "auto",
+  "compilerOptions": {
+    "lib": ["deno.window", "dom"],
+    "strict": true
+  },
+  "allowScripts": ["npm:usb@2.13.0"]
+}

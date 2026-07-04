@@ -1,0 +1,17 @@
+<template id="tpl-nvs-tab">
+  <div class="subpanel-toolbar">
+    <button class="reload">Read NVS</button>
+    <div class="spacer"></div>
+    <span class="reload-status hint">click Read NVS or run Detect</span>
+    <span class="badge">read-only</span>
+  </div>
+  <div class="nvs-split">
+    <aside class="nvs-tree"><ul class="ns-list"><li class="empty">No namespaces loaded.</li></ul></aside>
+    <section class="nvs-detail">
+      <table class="kv-list">
+        <thead><tr><th>Key</th><th>Type</th><th>Value</th></tr></thead>
+        <tbody><tr class="empty"><td colspan="3">Select a namespace.</td></tr></tbody>
+      </table>
+    </section>
+  </div>
+</template>

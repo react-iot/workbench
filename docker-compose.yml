@@ -1,0 +1,85 @@
+# Swarm stack for IoT Workbench.
+# Deploy with:  docker stack deploy -c docker-compose.yml workbench
+#
+# Prerequisites on the target worker node:
+#   1) Label the node so the constraint below matches:
+#        docker node update --label-add esp32_gateway=true <worker-hostname>
+#      (or replace the constraint with a `node.hostname == ...` match.)
+#   2) The image must be reachable from every manager/worker. On a single-node
+#      swarm you can `docker build -t esp32-workbench:latest .` locally and
+#      swarm will use the local image. In a multi-node swarm, push to a
+#      registry and reference that tag instead.
+#   3) udev rule on the host for CP210x write access (the rewrite button):
+#        echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", MODE="0666"' \
+#          | sudo tee /etc/udev/rules.d/99-cp210x.rules
+#        sudo udevadm control --reload && sudo udevadm trigger
+
+services:
+  esp32-workbench:
+    image: esp32-workbench:latest
+
+    # Host networking so the HTTP server, RFC2217 listeners, and mDNS
+    # advertisements use the worker node's real IP/MAC and LAN-reachable.
+    # This bypasses the swarm overlay network for this service; that's
+    # intentional — overlay networks can't carry mDNS multicast.
+    network_mode: host
+
+    # USB access:
+    # - Bind-mount the host's /dev so enumeration inside the container sees
+    #   /dev/ttyUSB* / /dev/ttyACM* as they appear/disappear.
+    # - Bind-mount /run/udev so libusb can resolve device paths.
+    # - SYS_ADMIN lets node-usb's detachKernelDriver() call succeed.
+    # Swarm `deploy:` stacks don't support `devices:`, so the bind-mount
+    # + capability combination is the canonical workaround.
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - /dev:/dev
+      - /run/udev:/run/udev:ro
+
+    environment:
+      PORT: "4000"
+      RFC2217_HOST: "0.0.0.0"
+      # Set MDNS_DISABLED=1 if the host already runs avahi / bonjour and you
+      # see "Service name is already in use" errors on start.
+      # MDNS_DISABLED: "1"
+
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          # Pin to the worker that has the USB hub / boards attached. Create
+          # the label once with:
+          #   docker node update --label-add esp32_gateway=true <hostname>
+          - node.labels.esp32_gateway == true
+          # Alternative (no label required):
+          # - node.hostname == rpi-worker-01
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 0
+        window: 30s
+      update_config:
+        order: stop-first
+        parallelism: 1
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:4000/api/ports >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

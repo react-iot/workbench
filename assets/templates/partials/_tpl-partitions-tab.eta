@@ -1,0 +1,50 @@
+<template id="tpl-partitions-tab">
+  <div class="discover-empty">
+    <h3>No flash data yet</h3>
+    <p>Run <strong>Discover</strong> to read the partition table, OTA slots, and NVS from the device.</p>
+    <button type="button" class="run-discover primary">Run Discover</button>
+    <p class="discover-status hint"></p>
+  </div>
+
+  <div class="partitions-content" hidden>
+    <div class="subpanel-toolbar">
+      <span class="cached-badge" hidden>cached</span>
+      <div class="spacer"></div>
+      <span class="meta"></span>
+    </div>
+
+    <h4 class="section-h">Flash layout</h4>
+    <div class="flash-ruler" aria-hidden="true"></div>
+    <div class="partition-bar large" title="Flash layout"></div>
+    <div class="legend">
+      <span class="legend-item"><span class="legend-swatch app"></span>app</span>
+      <span class="legend-item"><span class="legend-swatch data"></span>data</span>
+      <span class="legend-item"><span class="legend-swatch other"></span>other</span>
+      <span class="legend-item"><span class="legend-swatch gap"></span>unused</span>
+    </div>
+
+    <h4 class="section-h">OTA slots</h4>
+    <div class="ota-stack empty">No app slots loaded.</div>
+
+    <h4 class="section-h">Entries</h4>
+    <table class="partition-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Subtype</th><th>Offset</th><th>Size</th><th>Encrypted</th></tr>
+      </thead>
+      <tbody><tr class="empty"><td colspan="6">No partition table loaded.</td></tr></tbody>
+    </table>
+  </div>
+</template>
+
+<template id="tpl-ota-card">
+  <div class="ota-card">
+    <h3>
+      <span class="ota-name"></span>
+      <span class="ota-state-tag"></span>
+    </h3>
+    <div class="meta ota-meta-main"></div>
+    <div class="meta ota-meta-built"></div>
+    <div class="fill"><div class="fill-inner"></div></div>
+    <div class="meta usage-line"></div>
+  </div>
+</template>

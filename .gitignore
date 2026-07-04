@@ -1,0 +1,13 @@
+# Internal / not for the public repo
+rules/
+docs/
+.claude/
+
+# Dependencies (native-built; restored by `deno task start`)
+node_modules/
+
+# Local config & secrets
+.env
+
+# macOS
+.DS_Store

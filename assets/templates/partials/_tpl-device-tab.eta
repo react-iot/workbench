@@ -1,0 +1,49 @@
+<template id="tpl-device-tab">
+  <div class="card">
+    <h2>Transport</h2>
+    <dl class="kv">
+      <dt>Path</dt><dd data-k="path" class="mono">—</dd>
+      <dt>Baud</dt><dd data-k="baud">—</dd>
+      <dt>TCP (RFC2217)</dt><dd data-k="tcp" class="mono">—</dd>
+    </dl>
+  </div>
+  <div class="card">
+    <h2>USB device</h2>
+    <dl class="kv">
+      <dt>Product</dt><dd data-k="productName">—</dd>
+      <dt>Manufacturer</dt><dd data-k="manufacturer">—</dd>
+      <dt>Vendor</dt><dd data-k="vendor">—</dd>
+      <dt>VID:PID</dt><dd data-k="vidpid" class="mono">—</dd>
+      <dt>Serial</dt><dd data-k="serial" class="mono">—</dd>
+      <dt>Location</dt><dd data-k="location" class="mono">—</dd>
+      <dt>PnP ID</dt><dd data-k="pnpId" class="mono">—</dd>
+    </dl>
+  </div>
+  <div class="card">
+    <h2>Chip</h2>
+    <dl class="kv">
+      <dt>Chip</dt><dd data-k="chip">—</dd>
+      <dt>Package</dt><dd data-k="packageName">—</dd>
+      <dt>Revision</dt><dd data-k="revision">—</dd>
+      <dt>Magic</dt><dd data-k="magic" class="mono">—</dd>
+      <dt>MAC</dt><dd data-k="mac" class="mono">—</dd>
+      <dt>Crystal</dt><dd data-k="crystal">—</dd>
+      <dt>Flash size</dt><dd data-k="flashSize">—</dd>
+      <dt>Features</dt><dd data-k="features">—</dd>
+    </dl>
+    <p class="hint" data-k="status">Click Discover in the toolbar to read chip info, partition table, OTA slots and NVS in one pass.</p>
+    <div data-mac-match></div>
+  </div>
+  <div class="card firmware-banner">
+    <h2>Firmware banner</h2>
+    <dl class="kv">
+      <dt>Vendor</dt><dd data-fw="VENDOR">—</dd>
+      <dt>Product</dt><dd data-fw="PRODUCT">—</dd>
+      <dt>ID</dt><dd data-fw="ID" class="mono">—</dd>
+      <dt>Hardware</dt><dd data-fw="HW">—</dd>
+      <dt>Firmware</dt><dd data-fw="FW">—</dd>
+    </dl>
+    <p class="hint" data-fw-hint>Banner not seen yet. Reset the device to trigger it, or wait for the next boot-log.</p>
+    <div data-hw-match></div>
+  </div>
+</template>

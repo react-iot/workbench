@@ -1,0 +1,21 @@
+<template id="tpl-console-tab">
+  <div class="subpanel-toolbar">
+    <button class="clear">Clear</button>
+    <button class="ctrl-c" title="Send Ctrl+C">Ctrl+C</button>
+    <div class="spacer"></div>
+    <button class="color-toggle active" title="Toggle ESP-IDF log colours">Colors</button>
+  </div>
+  <div class="terminal-wrap"></div>
+  <form class="command-bar" autocomplete="off">
+    <input type="text" class="cmd-input" placeholder="Type a command and press Enter (↑/↓ for history)" spellcheck="false" />
+    <label class="cmd-eol-label">EOL
+      <select class="cmd-eol" title="Line ending appended on send">
+        <option value="\n" selected>LF</option>
+        <option value="\r">CR</option>
+        <option value="\r\n">CRLF</option>
+        <option value="">None</option>
+      </select>
+    </label>
+    <button type="submit" class="cmd-send primary">Send</button>
+  </form>
+</template>

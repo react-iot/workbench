@@ -1,0 +1,16 @@
+<template id="tpl-port-li">
+  <li>
+    <div class="port-header">
+      <span class="port-dot"></span>
+      <div class="port-title"></div>
+      <button type="button" class="port-close" title="Close session">×</button>
+    </div>
+    <div class="port-meta"></div>
+    <div class="port-path sub"></div>
+    <div class="port-state"></div>
+    <div class="port-tcp">
+      <span class="tag">rfc2217</span>
+      <span class="addr"></span>
+    </div>
+  </li>
+</template>

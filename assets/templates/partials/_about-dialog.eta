@@ -1,0 +1,28 @@
+<dialog id="about-dialog" class="about-dialog">
+  <form method="dialog" class="dlg-head">
+    <h2>About ESP32 Workbench</h2>
+    <button type="submit" class="dlg-close" aria-label="Close" title="Close">×</button>
+  </form>
+  <div class="dlg-body">
+    <div class="about-brand">
+      <img src="/img/logo.svg" alt="" class="about-logo" />
+      <div>
+        <div class="about-title">ESP32 Workbench</div>
+        <div class="about-version">Version <span id="about-version"></span></div>
+      </div>
+    </div>
+    <p class="about-description">
+      A browser-based serial console and flash-management workbench for ESP32-family microcontrollers.
+      Pairs a terminal with chip detection, partition-table visualization, OTA slot inspection,
+      filesystem browsing, NVS parsing, and per-device log history.
+    </p>
+    <dl class="about-meta">
+      <dt>Powered by</dt>
+      <dd><a href="https://www.reactiot.com.au" target="_blank" rel="noopener noreferrer">React IoT</a></dd>
+      <dt>Author</dt>
+      <dd><a href="https://www.srmiles.com" target="_blank" rel="noopener noreferrer">Steven Miles</a></dd>
+      <dt>Built on</dt>
+      <dd>Deno · esptool-js · xterm.js</dd>
+    </dl>
+  </div>
+</dialog>

@@ -1,0 +1,40 @@
+<template id="tpl-flash-dialog">
+  <dialog class="flash-dialog">
+    <form method="dialog" class="dlg-head">
+      <h2>Flash firmware</h2>
+      <button type="submit" class="dlg-close" aria-label="Close" title="Close">×</button>
+    </form>
+    <div class="dlg-body">
+      <section class="card">
+        <div class="row"><label>Binary</label><input type="file" class="bin" accept=".bin" /></div>
+        <div class="row"><label>Offset</label>
+          <select class="offset">
+            <option value="0x0">0x0 (bootloader)</option>
+            <option value="0x1000">0x1000</option>
+            <option value="0x8000">0x8000 (partition table)</option>
+            <option value="0x10000" selected>0x10000 (app)</option>
+            <option value="custom">Custom…</option>
+          </select>
+          <input type="text" class="custom-offset" placeholder="0x10000" hidden />
+        </div>
+        <div class="row">
+          <label><input type="checkbox" class="erase" /> Erase entire chip first</label>
+        </div>
+        <div class="row actions">
+          <button type="button" class="flash-btn primary">Flash</button>
+          <button type="button" class="cancel" disabled>Cancel</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-bar"><div class="progress-fill"></div></div>
+          <span class="progress-label">idle</span>
+        </div>
+      </section>
+      <section class="card">
+        <h3 class="card-h">MD5 verify</h3>
+        <div class="row"><label>Offset</label><input type="text" class="md5-offset" placeholder="0x10000" /></div>
+        <div class="row"><label>Length</label><input type="text" class="md5-length" placeholder="0x100000" /></div>
+        <div class="row actions"><button type="button" class="md5-btn">Compute</button><span class="md5-result mono">—</span></div>
+      </section>
+    </div>
+  </dialog>
+</template>

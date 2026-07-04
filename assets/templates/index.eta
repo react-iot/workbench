@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<%~ include("partials/_head", it) %>
+<body>
+  <div id="offline-banner" class="offline-banner" hidden role="status" aria-live="polite">
+    <span class="offline-banner-dot" aria-hidden="true"></span>
+    <span class="offline-banner-msg">Server offline — reconnecting…</span>
+  </div>
+
+  <%~ include("partials/_sidebar", it) %>
+
+  <%~ include("partials/_about-dialog", it) %>
+
+  <main id="main">
+    <div id="panels"></div>
+    <div id="empty" class="empty">Pick a port from the sidebar to open a console.</div>
+  </main>
+
+  <!--
+    Templates cloned at runtime by /app.js and /session.js. Kept together at
+    the end of <body> so the page structure above reads cleanly.
+  -->
+  <%~ include("partials/_tpl-port-li", it) %>
+  <%~ include("partials/_tpl-panel", it) %>
+  <%~ include("partials/_tpl-console-tab", it) %>
+  <%~ include("partials/_tpl-device-tab", it) %>
+  <%~ include("partials/_tpl-partitions-tab", it) %>
+  <%~ include("partials/_tpl-files-tab", it) %>
+  <%~ include("partials/_tpl-flash-dialog", it) %>
+  <%~ include("partials/_tpl-nvs-tab", it) %>
+  <%~ include("partials/_tpl-log", it) %>
+
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.js"></script>
+  <script type="module" src="/app.js"></script>
+  <%~ include("partials/_browsersync", it) %>
+</body>
+</html>
